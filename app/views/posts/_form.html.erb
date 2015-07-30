@@ -1,0 +1,33 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_reddit_id, "Sub Reddit" %><br>
+    <%= f.select(:sub_reddit_id, sub_reddits_to_select, {include_blank: "Pick a sub_reddit."}, :class => "form-control") %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id, :class => "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit Post", :class => "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'hot_reddit' => 'sub_reddits#hot_reddit'
-  get 'nasty_reddit' => 'sub_reddits#nasty_reddit'
+  resources :posts
+  
+  get 'hot_reddit' => 'sub_reddits#hot_reddit', as: :hot
+  get 'nasty_reddit' => 'sub_reddits#nasty_reddit', as: :nasty
   root 'sub_reddits#hot_reddit'
 end
