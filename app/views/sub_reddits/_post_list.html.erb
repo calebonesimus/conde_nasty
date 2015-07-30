@@ -4,7 +4,7 @@
 
       <div class="col-md-1">
         <p><%= link_to "UP", vote_up_path(:id => post.id) %></p>
-        <p><%= post.up_votes.count - post.down_votes.count %></p>
+        <p><%= post.final_votes %></p>
         <p><%= link_to "DOWN", vote_down_path(:id => post.id) %></p>
       </div>
 
