@@ -1,0 +1,9 @@
+<div class="container">
+  <% @posts.each do |post| %>
+    <div class="row post-box">
+      <h3><%= link_to post.title, post.link %>  <span class="link-text">(<%= post.link %>)</span></h3>
+      <p>Submitted <%= time_ago_in_words(post.created_at) %> by <%= post.user %> on <%= post.sub_reddit.name %></p>
+      <p></p>
+    </div>
+  <% end %>
+</div>
