@@ -3,9 +3,9 @@
     <div class="row post-box">
 
       <div class="col-md-1">
-        <p><%= link_to "UP", vote_up_path(:id => post.id) %></p>
+        <p><%= link_to "", vote_up_path(:id => post.id), :class => "glyphicon glyphicon-arrow-up" %></p>
         <p><%= post.final_votes %></p>
-        <p><%= link_to "DOWN", vote_down_path(:id => post.id) %></p>
+        <p><%= link_to "", vote_down_path(:id => post.id), :class => "glyphicon glyphicon-arrow-down" %></p>
       </div>
 
       <div class="col-md-11">

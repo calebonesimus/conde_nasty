@@ -18,3 +18,22 @@
  @import "posts";
  @import "scaffolds";
  @import "sub_reddits";
+
+ $footer-height: 50px;
+
+ html, body {
+   height: 100%;
+ }
+
+ #wrap {
+   min-height: 100%;
+   height: auto;
+   margin: 0 auto -$footer-height;
+   padding: 0 0 $footer-height;
+ }
+
+ #footer {
+   height: $footer-height;
+   position: relative;
+   background-color: #888;
+ }
