@@ -1,10 +1,22 @@
 <div class="container">
   <% @posts.each do |post| %>
     <div class="row post-box">
-      <h3><%= link_to post.title, post.link %>  <span class="link-text">(<%= post.link %>)</span></h3>
-      <p>Submitted <%= time_ago_in_words(post.created_at) %> by <%= post.user %> on <%= post.sub_reddit.name %></p>
-      <p><%= link_to "UP", vote_up_path(:id => post.id) %></p>
-      <p><%= link_to "DOWN", vote_down_path(:id => post.id) %></p>
+
+      <div class="col-md-1">
+        <p><%= link_to "UP", vote_up_path(:id => post.id) %></p>
+        <p><%= post.up_votes.count - post.down_votes.count %></p>
+        <p><%= link_to "DOWN", vote_down_path(:id => post.id) %></p>
+      </div>
+
+      <div class="col-md-11">
+        <h3><%= link_to post.title, post.url %>  <span class="link-text">(<%= post.url %>)</span></h3>
+        <p>Submitted <%= time_ago_in_words(post.created_at) %>
+          by <%= post.user %>
+          on <%= link_to post.sub_reddit.name, send("#{post.sub_reddit.name}_path") %>
+        </p>
+      </div>
+
+
     </div>
   <% end %>
 </div>

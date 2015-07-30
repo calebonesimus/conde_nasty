@@ -13,19 +13,19 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title, :class => "form-control" %>
+    <%= f.text_field :title, :placeholder => "Choose a title", :class => "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :link %><br>
-    <%= f.text_field :link, :class => "form-control" %>
+    <%= f.label :url %><br>
+    <%= f.text_field :url, :placeholder => "Choose a full URL", :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :sub_reddit_id, "Sub Reddit" %><br>
-    <%= f.select(:sub_reddit_id, sub_reddits_to_select, {include_blank: "Pick a sub_reddit."}, :class => "form-control") %>
+    <%= f.select(:sub_reddit_id, sub_reddits_to_select, {include_blank: "Pick a sub_reddit"}, :class => "form-control") %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id, :class => "form-control" %>
+    <%= f.number_field :user_id, :placeholder => "this will be somethign else later", :class => "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit "Submit Post", :class => "btn btn-primary" %>

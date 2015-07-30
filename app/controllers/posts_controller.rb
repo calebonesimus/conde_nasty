@@ -3,10 +3,12 @@ class PostsController < ApplicationController
 
   def vote_up
     @vote = UpVote.create(:post_id => @post.id)
+    redirect_to send("#{@post.sub_reddit.name}_path")
   end
 
   def vote_down
     @vote = DownVote.create(:post_id => @post.id)
+    redirect_to send("#{@post.sub_reddit.name}_path")
   end
 
   # GET /posts/new

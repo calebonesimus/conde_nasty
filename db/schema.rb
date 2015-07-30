@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730185244) do
+ActiveRecord::Schema.define(version: 20150730202304) do
 
   create_table "down_votes", force: :cascade do |t|
     t.integer  "post_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150730185244) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.string   "link"
+    t.string   "url"
     t.integer  "sub_reddit_id"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
