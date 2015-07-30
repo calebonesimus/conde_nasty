@@ -3,7 +3,8 @@
     <div class="row post-box">
       <h3><%= link_to post.title, post.link %>  <span class="link-text">(<%= post.link %>)</span></h3>
       <p>Submitted <%= time_ago_in_words(post.created_at) %> by <%= post.user %> on <%= post.sub_reddit.name %></p>
-      <p></p>
+      <p><%= link_to "UP", vote_up_path(:id => post.id) %></p>
+      <p><%= link_to "DOWN", vote_down_path(:id => post.id) %></p>
     </div>
   <% end %>
 </div>

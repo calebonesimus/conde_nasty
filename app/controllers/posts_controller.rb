@@ -1,5 +1,13 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down]
+
+  def vote_up
+    @vote = UpVote.create(:post_id => @post.id)
+  end
+
+  def vote_down
+    @vote = DownVote.create(:post_id => @post.id)
+  end
 
   # GET /posts/new
   def new
