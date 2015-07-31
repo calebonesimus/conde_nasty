@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+SubReddit.create(:name => "hot_reddit")
+SubReddit.create(:name => "nasty_reddit")
+
+# User.create(:first_name => "Caleb"
+#             :last_name => "Francis"
+#             :username => "calebonesimus")
