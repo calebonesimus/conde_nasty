@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # get 'posts/:id/vote_up' => 'posts#vote_up', as: :vote_up
-  # get 'posts/:id/vote_down' => 'posts#vote_down', as: :vote_down
+  post 'must_sign_in' => 'posts#must_sign_in', as: :must_sign_in
 
 
 
