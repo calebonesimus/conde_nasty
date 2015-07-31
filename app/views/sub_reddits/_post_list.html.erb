@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
   <div class="row post-box">
 
-    <div class="col-md-1 text-center">
+    <div class="col-xs-1 text-center">
       <% if user_signed_in? %>
         <p><%= button_to '+', vote_up_post_path(:id => post.id), :class => "btn btn-inverse" %></p>
       <% else %>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
 
-    <div class="col-md-11">
+    <div class="col-xs-11">
       <h3><%= link_to post.title, go_to_url_post_path(:id => post.id) %> <span class="link-text">(<%= post.url %>)</span></h3>
       <p>Submitted <%= time_ago_in_words(post.created_at) %>
          by <%= post.user.username %>
