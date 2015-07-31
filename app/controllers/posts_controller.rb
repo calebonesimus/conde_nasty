@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down, :go_to_url]
 
   def vote_up
     @post.up_votes.create
@@ -9,6 +9,11 @@ class PostsController < ApplicationController
   def vote_down
     @post.down_votes.create
     redirect_to send("#{@post.sub_reddit.name}_path")
+  end
+
+  def go_to_url
+    @post.up_votes.create
+    redirect_to @post.url
   end
 
   # GET /posts/new

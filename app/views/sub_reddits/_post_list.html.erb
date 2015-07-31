@@ -9,7 +9,7 @@
       </div>
 
       <div class="col-md-11">
-        <h3><%= link_to post.title, post.url %> <span class="link-text">(<%= post.url %>)</span></h3>
+        <h3><%= link_to post.title, go_to_url_post_path(:id => post.id) %> <span class="link-text">(<%= post.url %>)</span></h3>
         <p>Submitted <%= time_ago_in_words(post.created_at) %>
           by <%= post.user %>
           on <%= link_to post.sub_reddit.name, send("#{post.sub_reddit.name}_path") %>

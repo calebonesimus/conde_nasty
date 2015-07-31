@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   resources :posts do
     member do
       post 'vote_up'
-    end
-
-    member do
       post 'vote_down'
+      get 'go_to_url'
     end
   end
 
