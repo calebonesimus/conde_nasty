@@ -12,4 +12,16 @@ class SubRedditsController < ApplicationController
     end.reverse
   end
 
+  # def vote_up(post)
+  #   UpVote.create(:post_id => post.id)
+  #   redirect_to send("#{post.sub_reddit.name}_path")
+  # end
+  #
+  # def vote_down(post)
+  #   DownVote.create(:post_id => post.id)
+  #   redirect_to send("#{@post.sub_reddit.name}_path")
+  # end
+
+  # helper_method :vote_up, :vote_down
+
 end

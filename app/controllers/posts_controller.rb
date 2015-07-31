@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down]
 
   def vote_up
-    @vote = UpVote.create(:post_id => @post.id)
+    @post.up_votes.create
     redirect_to send("#{@post.sub_reddit.name}_path")
   end
 
   def vote_down
-    @vote = DownVote.create(:post_id => @post.id)
+    @post.down_votes.create
     redirect_to send("#{@post.sub_reddit.name}_path")
   end
 

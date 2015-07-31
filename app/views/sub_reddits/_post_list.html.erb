@@ -2,14 +2,14 @@
   <% @posts.each do |post| %>
     <div class="row post-box">
 
-      <div class="col-md-1">
-        <p><%= link_to "", vote_up_path(:id => post.id), :class => "glyphicon glyphicon-arrow-up" %></p>
+      <div class="col-md-1 text-center">
+        <p><%= button_to '+', vote_up_post_path(:id => post.id), :class => "btn btn-inverse" %></p>
         <p><%= post.final_votes %></p>
-        <p><%= link_to "", vote_down_path(:id => post.id), :class => "glyphicon glyphicon-arrow-down" %></p>
+        <p><%= button_to '-', vote_down_post_path(:id => post.id), :class => "btn btn-inverse" %></p>
       </div>
 
       <div class="col-md-11">
-        <h3><%= link_to post.title, post.url %>  <span class="link-text">(<%= post.url %>)</span></h3>
+        <h3><%= link_to post.title, post.url %> <span class="link-text">(<%= post.url %>)</span></h3>
         <p>Submitted <%= time_ago_in_words(post.created_at) %>
           by <%= post.user %>
           on <%= link_to post.sub_reddit.name, send("#{post.sub_reddit.name}_path") %>
