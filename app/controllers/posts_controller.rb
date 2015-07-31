@@ -2,23 +2,23 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down, :go_to_url]
 
   def vote_up
-    @post.up_votes.create
+    @post.up_votes.create(:user_id => current_user.id)
     redirect_to send("#{@post.sub_reddit.name}_path")
   end
 
   def vote_down
-    @post.down_votes.create
+    @post.down_votes.create(:user_id => current_user.id)
     redirect_to send("#{@post.sub_reddit.name}_path")
   end
 
   def go_to_url
-    @post.up_votes.create
+    @post.up_votes.create(:user_id => current_user.id)
     redirect_to @post.url
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(:user_id => current_user.id)
   end
 
   # GET /posts/1/edit
