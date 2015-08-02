@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <h2><%= @user.username %></h2>
+    <p><%= @user.first_name %><%= @user.last_name %></p>
+    <ul class="voted-posts">
+      <% @upvotes.each do |upvote| %>
+      <li><%= render :partial => 'post', :locals => { :post => upvote.post } %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

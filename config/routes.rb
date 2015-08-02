@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  get 'profiles/:username' => 'profiles#show'
+
+  devise_for :users, :controllers => {
+      :registrations => 'devise/registrations',
+      :sessions => 'devise/sessions',
+      :passwords => 'devise/passwords',
+      :confirmations => 'devise/confirmations',
+      :unlocks => 'devise/unlocks'
+  }
+
   resources :posts do
     member do
       post 'vote_up'
@@ -9,7 +19,6 @@ Rails.application.routes.draw do
   end
 
   post 'must_sign_in' => 'posts#must_sign_in', as: :must_sign_in
-
 
 
   get 'hot_reddit' => 'sub_reddits#hot_reddit', as: :hot_reddit

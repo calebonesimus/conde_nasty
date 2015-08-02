@@ -8,13 +8,13 @@
 SubReddit.create(:name => "hot_reddit")
 SubReddit.create(:name => "nasty_reddit")
 
-User.create(:first_name => "Test",
-            :last_name => "user",
-            :username => "testuser",
-            :email => "test@user.com",
-            :password => "password",
-            :password_confirmation => "password")
-
-User.find(1).posts.create(:title => "Test Post",
-                          :url => "http://www.calebfrancis.com",
-                          :sub_reddit_id => 1)
+# User.create(:first_name => "Test",
+#             :last_name => "user",
+#             :username => "testuser",
+#             :email => "test@user.com",
+#             :password => "password",
+#             :password_confirmation => "password")
+#
+# User.find(1).posts.create(:title => "Test Post",
+#                           :url => "http://www.calebfrancis.com",
+#                           :sub_reddit_id => 1)
