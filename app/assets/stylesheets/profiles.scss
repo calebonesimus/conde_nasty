@@ -4,4 +4,14 @@
 
 .voted-posts {
   list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+
+  li {
+    display: inline;
+  }
+
+  li + li {
+    margin-left: 15px;
+  }
 }
