@@ -21,6 +21,7 @@
          by <%= post.user.username %>
          on <%= link_to post.sub_reddit.name, subreddit_path(:reddit => post.sub_reddit.name) %>
       </p>
+      <p><%= link_to "Comments", "#" %></p>
     </div>
 
 
