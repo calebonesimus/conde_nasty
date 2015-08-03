@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$('.comment-form').hide();
+
+$('.comment-button').click(function() {
+  $(this).next().toggle();
+});
