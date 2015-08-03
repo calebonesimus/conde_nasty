@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :up_votes, :dependent => :destroy
   has_many :down_votes, :dependent => :destroy
   has_many :posts, :dependent => :destroy
+  has_many :comments
   has_one :profile
 
 end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       post 'vote_down'
       get 'go_to_url'
     end
+    resources :comments, :only => [:index, :show, :create, :update]
   end
 
   post 'must_sign_in' => 'posts#must_sign_in', as: :must_sign_in

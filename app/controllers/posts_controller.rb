@@ -3,12 +3,12 @@ class PostsController < ApplicationController
 
   def vote_up
     @post.up_votes.create(:user_id => current_user.id)
-    redirect_to send("#{@post.sub_reddit.name}_path")
+    redirect_to :back
   end
 
   def vote_down
     @post.down_votes.create(:user_id => current_user.id)
-    redirect_to send("#{@post.sub_reddit.name}_path")
+    redirect_to :back
   end
 
   def go_to_url
@@ -24,6 +24,10 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+  end
+
+  def show
+    @comment = @post.comments.new(:user_id => current_user.id)
   end
 
   # GET /posts/1/edit
