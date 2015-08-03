@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+
+    <div class="profile_nav">
+      <div class="row text-center">
+        <ul class="voted-posts">
+          <li><%= link_to "Up Votes", up_vote_path(:username => @user.username) %></li>
+          <li><%= link_to "Down Votes", down_vote_path(:username => @user.username) %></li>
+          <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2><%= @user.username %></h2>
+    <p><%= @user.first_name %><%= @user.last_name %></p>
+
+  </div>
+</div>

@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  get 'profiles/:username' => 'profiles#show', as: :view_profile
+  get 'profiles/:username/up_votes' => 'profiles#upvotes', as: :up_vote
+  get 'profiles/:username/down_votes' => 'profiles#downvotes', as: :down_vote
+
+  devise_for :users, :controllers => {
+      :registrations => 'devise/registrations',
+      :sessions => 'devise/sessions',
+      :passwords => 'devise/passwords',
+      :confirmations => 'devise/confirmations',
+      :unlocks => 'devise/unlocks'
+  }
+
   resources :posts do
     member do
       post 'vote_up'
@@ -12,4 +24,5 @@ Rails.application.routes.draw do
 
   get 'r/:reddit' => 'sub_reddits#show', as: :subreddit
   root 'sub_reddits#show'
+
 end
