@@ -63,13 +63,40 @@ class PostsController < ApplicationController
   end
 
   def vote_up
-    @post.up_votes.create(:user_id => current_user.id)
-    redirect_to :back
+    upvote = @post.up_votes.find_by_user_id(current_user.id)
+    downvote = @post.down_votes.find_by_user_id(current_user.id)
+
+    # Creates upvote if no vote is made
+    if upvote.nil? && downvote.nil?
+      @post.up_votes.create(:user_id => current_user.id)
+      redirect_to :back
+    # Removes downvote and creates upvote
+    elsif upvote.nil?
+      downvote.delete
+      @post.up_votes.create(:user_id => current_user.id)
+      redirect_to :back
+    # Removes upvote if one exists
+    else
+      upvote.delete
+      redirect_to :back
+    end
   end
 
   def vote_down
-    @post.down_votes.create(:user_id => current_user.id)
-    redirect_to :back
+    upvote = @post.up_votes.find_by_user_id(current_user.id)
+    downvote = @post.down_votes.find_by_user_id(current_user.id)
+
+    if downvote.nil? && upvote.nil?
+      @post.down_votes.create(:user_id => current_user.id)
+      redirect_to :back
+    elsif downvote.nil?
+      upvote.delete
+      @post.down_votes.create(:user_id => current_user.id)
+      redirect_to :back
+    else
+      downvote.delete
+      redirect_to :back
+    end
   end
 
   def go_to_url
