@@ -1,9 +1,8 @@
 <% posts.each do |post|  %>
-  <div class="col-md-12">
-    <h3><%= link_to post.title, go_to_url_post_path(:id => post.id) %> <span class="link-text">(<%= post.url %>)</span></h3>
-    <p>Submitted <%= time_ago_in_words(post.created_at) %>
-       by <%= post.user.username %>
-       on <%= link_to post.sub_reddit.name, subreddit_path(post.sub_reddit) %>
-    </p>
-  </div>
+  <h3><%= link_to post.title, go_to_url_post_path(:id => post.id) %> <span class="link-text">(<%= post.url %>)</span></h3>
+  <p>Submitted <%= time_ago_in_words(post.created_at) %>
+     by <%= post.user.username %>
+     on <%= link_to post.sub_reddit.name, subreddit_path(:reddit => post.sub_reddit.name) %>
+  </p>
+  <p><%= link_to pluralize(post.comments.count, "comment"), post_path(post) %></p>
 <% end %>
