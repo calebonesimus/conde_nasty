@@ -4,6 +4,9 @@ class PostsController < ApplicationController
   def index
     @subreddit = SubReddit.find_by_name(params[:reddit] || "hot_reddit")
     @posts = @subreddit.posts
+    if @posts.empty?
+      render 'no_posts'
+    end
   end
 
   # GET /posts/new
