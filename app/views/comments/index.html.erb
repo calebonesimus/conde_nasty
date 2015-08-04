@@ -10,6 +10,7 @@
     <% @comments.each do |comment| %>
       <div class="row">
         <h3><%= comment.body %></h3>
+        <p>Posted by <%= comment.user.name %></p>
         <p><%= link_to "Comment link", post_comment_path(:id => comment.id) %></p>
 
         <% if user_signed_in? %>
