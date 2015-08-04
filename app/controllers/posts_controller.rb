@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   def index
     @subreddit = SubReddit.find_by_name(params[:reddit] || "hot_reddit")
     @posts = @subreddit.posts
+
+    # Show a no post page is no posts are assinged to this subreddit
     if @posts.empty?
       render 'no_posts'
     end
