@@ -1,28 +1,13 @@
-<%= render :partial => '/sub_reddits/post', :locals => { :post => @post } %>
-
 <div class="container">
   <div class="row">
 
     <% if user_signed_in? %>
-      <%= render :partial => 'form', :locals => { :comment => @comment } %>
+      <%= render :partial => 'form', :locals => { :commentable_object => @post } %>
     <% end %>
 
     <% @comments.each do |comment| %>
-      <div class="row">
-        <h3><%= comment.body %></h3>
-        <p>Posted by <%= comment.user.name %></p>
-        <p><%= link_to "Comment link", post_comment_path(:id => comment.id) %></p>
-
-        <% if user_signed_in? %>
-          <div class="comment-container">
-            <button class="btn btn-inverse comment-button">reply</button>
-            <div class="comment-form">
-              <%= render :partial => 'form', :locals => { :comment => comment.comments.new } %>
-            </div>
-          </div>
-        <% end %>
-
-      </div>
+      <%= render partial: 'comment', locals: { :comment => comment } %>
     <% end %>
+
   </div>
 </div>

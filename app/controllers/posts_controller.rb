@@ -1,24 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote_up, :vote_down, :go_to_url]
 
-  def vote_up
-    @post.up_votes.create(:user_id => current_user.id)
-    redirect_to :back
-  end
-
-  def vote_down
-    @post.down_votes.create(:user_id => current_user.id)
-    redirect_to :back
-  end
-
-  def go_to_url
-    @post.up_votes.create(:user_id => current_user.id)
-    redirect_to @post.url
-  end
-
-  def must_sign_in
-    flash.alert = "You must be signed in to do that."
-    redirect_to root_path
+  def index
+    @subreddit = SubReddit.find_by_name(params[:reddit] || "hot_reddit")
+    @posts = @subreddit.posts
   end
 
   # GET /posts/new
@@ -27,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = @post.comments.new(:user_id => current_user.id)
+    @comment = Comment.new
   end
 
   # GET /posts/1/edit
@@ -72,6 +57,26 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def vote_up
+    @post.up_votes.create(:user_id => current_user.id)
+    redirect_to :back
+  end
+
+  def vote_down
+    @post.down_votes.create(:user_id => current_user.id)
+    redirect_to :back
+  end
+
+  def go_to_url
+    @post.up_votes.create(:user_id => current_user.id)
+    redirect_to @post.url
+  end
+
+  def must_sign_in
+    flash.alert = "You must be signed in to do that."
+    redirect_to root_path
   end
 
   private

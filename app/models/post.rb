@@ -4,7 +4,8 @@ class Post < ActiveRecord::Base
 
   has_many :up_votes
   has_many :down_votes
-  has_many :comments
+
+  has_many :comments, as: :commentable
 
   def final_votes
     self.up_votes.count - self.down_votes.count

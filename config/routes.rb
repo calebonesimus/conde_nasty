@@ -18,12 +18,13 @@ Rails.application.routes.draw do
       post 'vote_down'
       get 'go_to_url'
     end
-    resources :comments, :only => [:index, :show, :create, :update]
+
   end
+  resources :comments, :only => [:index, :show, :create, :update]
 
   post 'must_sign_in' => 'posts#must_sign_in', as: :must_sign_in
 
-  get 'r/:reddit' => 'sub_reddits#show', as: :subreddit
-  root 'sub_reddits#show'
+  get 'r/:reddit' => 'posts#index', as: :subreddit
+  root 'posts#index'
 
 end

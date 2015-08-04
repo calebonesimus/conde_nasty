@@ -1,7 +1,12 @@
-<%= form_for :comment do |f| %>
+<%= form_for(@comment) do |f| %>
+  <!-- set what object the comment is on -->
+  <%= f.hidden_field :commentable_id, value: commentable_object.id %>
+  <%= f.hidden_field :commentable_type, value: commentable_object.class.to_s %>
+
   <div class="field">
     <%= f.text_area :body, :class => "form-control" %>
   </div>
+
   <div class="actions">
     <%= f.submit "Submit", :class => "btn btn-primary" %>
   </div>
