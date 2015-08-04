@@ -70,8 +70,12 @@ class PostsController < ApplicationController
   end
 
   def go_to_url
-    @post.up_votes.create(:user_id => current_user.id)
-    redirect_to @post.url
+    if current_user
+      @post.up_votes.create(:user_id => current_user.id)
+      redirect_to @post.url
+    else
+      redirect_to @post.url
+    end
   end
 
   def must_sign_in
