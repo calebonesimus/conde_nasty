@@ -17,7 +17,6 @@
  @import "bootstrap";
  @import "posts";
  @import "scaffolds";
- @import "sub_reddits";
 
  $footer-height: 50px;
 
@@ -36,4 +35,8 @@
    height: $footer-height;
    position: relative;
    background-color: #888;
+ }
+
+ .inline {
+   display: inline;
  }

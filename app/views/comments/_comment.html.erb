@@ -1,13 +1,13 @@
 <h3><%= comment.body %></h3>
 <p><%= link_to "Comment link", "#" %></p>
+<p>Reply to <%= comment.commentable_type %> by <%= comment.user.username %></p>
 
-<!-- render form when user clicks reply -->
+<!-- display reply button and form if user is signed in -->
 <% if user_signed_in? %>
-  <div class="comment-container">
-    <button class="btn btn-inverse comment-button">reply</button>
+    <a href="javascript:;" class="comment-button">reply</a>
     <div class="comment-form">
       <%= render :partial => 'comments/form', :locals => { :commentable_object => comment } %>
-      <%= render :partial => 'comments/comment', :collection => comment.comments %>
     </div>
-  </div>
 <% end %>
+
+<%= render :partial => 'comments/comment', :collection => comment.comments %>
