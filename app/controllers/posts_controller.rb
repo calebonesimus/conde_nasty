@@ -101,8 +101,13 @@ class PostsController < ApplicationController
 
   def go_to_url
     if current_user
-      @post.up_votes.create(:user_id => current_user.id)
-      redirect_to @post.url
+      upvote = @post.up_votes.find_by_user_id(current_user.id)
+      if upvote.nil?
+        @post.up_votes.create(:user_id => current_user.id)
+        redirect_to @post.url
+      else
+        redirect_to @post.url
+      end
     else
       redirect_to @post.url
     end
