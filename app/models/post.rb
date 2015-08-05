@@ -11,16 +11,16 @@ class Post < ActiveRecord::Base
     self.up_votes.count - self.down_votes.count
   end
 
-  def comment_count
-    comment_count = self.comments.count
-    self.comments.each do |comment|
-      if comment.comments.nil?
-        comment_count
-      else
-        comment_count += comment.comments.count
+  def comment_count(commentable, total=0)
+      total += commentable.comments.count
+      if commentable.comments
+        commentable.comments.each do |comment|
+          total += 1
+          comment_count(comment, total)
+        end
       end
-    end
-    comment_count
+    total
   end
+
 
 end

@@ -19,6 +19,6 @@
        by <%= post.user.username %>
        on <%= link_to post.sub_reddit.name, subreddit_path(:reddit => post.sub_reddit.name) %>
     </p>
-    <p><%= link_to pluralize(post.comment_count, "comment"), post_path(post) %></p>
+    <p><%= link_to pluralize(post.comment_count(post), "comment"), post_path(post) %></p>
   </div>
 </div>
