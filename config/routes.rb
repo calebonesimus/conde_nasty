@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
   get 'profiles/:username' => 'profiles#show', as: :view_profile
-  get 'profiles/:username/up_votes' => 'profiles#upvotes', as: :up_vote
-  get 'profiles/:username/down_votes' => 'profiles#downvotes', as: :down_vote
-  get 'profiles/:username/posts' => 'profiles#posts', as: :user_posts
-  get 'profiles/:username/comments' => 'profiles#comments', as: :user_comments
 
   devise_for :users, :controllers => {
       :registrations => 'devise/registrations',

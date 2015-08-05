@@ -1,10 +1,41 @@
 <div class="container">
   <div class="row">
-
-    <%= render partial: 'profile_nav' %>
-
     <h2><%= @user.username %></h2>
     <p><%= @user.first_name %><%= @user.last_name %></p>
-
   </div>
+
+  <div class="row">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li role="presentation"><a data-toggle="tab" role="tab" href="#profile">View Profile</a></li>
+      <li role="presentation"><a data-toggle="tab" role="tab" href="#posts">Posts</a></li>
+      <li role="presentation"><a data-toggle="tab" role="tab" href="#comments">Comments</a></li>
+      <li role="presentation"><a data-toggle="tab" role="tab" href="#up_votes">Up Votes</a></li>
+      <li role="presentation"><a data-toggle="tab" role="tab" href="#down_votes">Down Votes</a></li>
+      <% if user_signed_in? && @user == current_user %>
+        <li role="presentation"><a data-toggle="tab" role="tab" href="#edit_profile">Edit Profile</a></li>
+      <% end %>
+    </ul>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane" id="profile">
+          <%= render 'profile' %>
+      </div>
+      <div class="tab-pane" id="posts">
+          <%= render partial: 'post', collection: @posts %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="comments">
+          <%= render partial: 'comment', collection: @comments %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="up_votes">
+          <%= render partial: 'post', collection: @upvotes %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="down_votes">
+          <%= render partial: 'post', collection: @downvotes %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="edit_profile">
+          <%= render partial: 'edit_profile' %>
+      </div>
+    </div>
+  </div>
+
 </div>
